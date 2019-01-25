@@ -21,7 +21,7 @@
 		<kotlin.version>1.2.71</kotlin.version>
 		<vavr.version>0.10.0</vavr.version>
 		<querydsl.version>3.7.4</querydsl.version>
-		<liquibase.version>3.4.1</liquibase.version>
+		<liquibase.version>3.6.2</liquibase.version>
 		<mockk.version>1.9</mockk.version>
 	</properties>
 
@@ -52,6 +52,15 @@
 	</dependencyManagement>
 
 	<dependencies>
+		<dependency>
+			<groupId>org.liquibase</groupId>
+			<artifactId>liquibase-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>runtime</scope>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-amqp</artifactId>
@@ -100,6 +109,10 @@
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jdbc</artifactId>
 		</dependency>
 	</dependencies>
 
