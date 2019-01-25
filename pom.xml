@@ -23,6 +23,8 @@
 		<querydsl.version>3.7.4</querydsl.version>
 		<liquibase.version>3.6.2</liquibase.version>
 		<mockk.version>1.9</mockk.version>
+		<junit.version>5.2.0</junit.version>
+		<roaster.version>2.20.1.Final</roaster.version>
 	</properties>
 
 	<dependencyManagement>
@@ -48,10 +50,38 @@
 				<version>${mockk.version}</version>
 				<scope>test</scope>
 			</dependency>
+			<dependency>
+				<groupId>org.junit.jupiter</groupId>
+				<artifactId>junit-jupiter-api</artifactId>
+				<version>${junit.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.junit.jupiter</groupId>
+				<artifactId>junit-jupiter-params</artifactId>
+				<version>${junit.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.jboss.forge.roaster</groupId>
+				<artifactId>roaster-api</artifactId>
+				<version>${roaster.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.jboss.forge.roaster</groupId>
+				<artifactId>roaster-jdt</artifactId>
+				<version>${roaster.version}</version>
+				<scope>runtime</scope>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
 	<dependencies>
+
+		<dependency>
+			<groupId>org.assertj</groupId>
+			<artifactId>assertj-core</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.liquibase</groupId>
 			<artifactId>liquibase-core</artifactId>
