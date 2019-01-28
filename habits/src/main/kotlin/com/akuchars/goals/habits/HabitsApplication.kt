@@ -9,4 +9,3 @@ class HabitsApplication
 fun main(args: Array<String>) {
     runApplication<HabitsApplication>(*args)
 }
-
