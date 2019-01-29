@@ -13,6 +13,5 @@ class HabitsApplicationTests {
     @Test
     fun contextLoads() {
     }
-
 }
 

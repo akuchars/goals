@@ -7,7 +7,7 @@ import javax.persistence.MappedSuperclass
 @MappedSuperclass
 abstract class AbstractJpaEntity(@Id
                               @GeneratedValue
-                              private var id: Long? = null) {
+                              var id: Long? = null) {
 
     override fun toString() = "Entity of type ${this.javaClass.name} with id: $id"
 
