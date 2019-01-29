@@ -7,6 +7,9 @@ import org.springframework.stereotype.Component
 
 @Component
 class ColorConverterImpl: ColorConverter {
+    override fun revert(colorRestDto: ColorRestDto): Color {
+        return Color.valueOf(colorRestDto.name)
+    }
 
     override fun convert(color: Color): ColorRestDto? {
         return ColorRestDto.valueOf(color.name)

@@ -4,4 +4,6 @@ import com.akuchars.goals.habits.domain.common.model.Color
 import com.akuchars.goals.habits.rest.dto.goal.ColorRestDto
 import org.springframework.core.convert.converter.Converter
 
-interface ColorConverter: Converter<Color, ColorRestDto>
+interface ColorConverter: Converter<Color, ColorRestDto> {
+    fun revert(colorRestDto: ColorRestDto): Color
+}
