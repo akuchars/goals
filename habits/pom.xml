@@ -15,6 +15,10 @@
 
 	<dependencies>
 		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-api</artifactId>
 		</dependency>
@@ -39,10 +43,15 @@
 			<artifactId>vavr-kotlin</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>io.mockk</groupId>
+			<artifactId>mockk</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>com.akuchars.goals</groupId>
 			<artifactId>ddd-core</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+
 	</dependencies>
 
 
