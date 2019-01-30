@@ -18,8 +18,8 @@ import kotlin.jvm.internal.Intrinsics;
 @Access(AccessType.FIELD)
 @SuppressWarnings("NullabilityAnnotations")
 public class Actual extends AbstractJpaEntity {
-	private final LocalDate date;
-	private final boolean done;
+	private LocalDate date;
+	private boolean done;
 	@OneToOne
 	@JoinColumn(
 		name = "goal_id"
@@ -27,16 +27,16 @@ public class Actual extends AbstractJpaEntity {
 	private final Template goal;
 
 	@NotNull
-	public final LocalDate getDate() {
+	public LocalDate getDate() {
 		return this.date;
 	}
 
-	public final boolean getDone() {
+	public boolean getDone() {
 		return this.done;
 	}
 
 	@NotNull
-	public final Template getGoal() {
+	public Template getGoal() {
 		return this.goal;
 	}
 

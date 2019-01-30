@@ -4,7 +4,7 @@ import io.vavr.control.Either
 import io.vavr.kotlin.`try`
 import org.springframework.data.repository.CrudRepository
 
-fun <DTO, T, ID> CrudRepository<T, ID>.saveWithWalidate(
+fun <DTO, T, ID> CrudRepository<T, ID>.saveWithValidate(
         dto: DTO,
         function: (DTO) -> T,
         validation: (T) -> Boolean

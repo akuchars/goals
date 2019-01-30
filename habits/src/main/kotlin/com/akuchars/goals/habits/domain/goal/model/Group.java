@@ -46,17 +46,17 @@ public class Group extends AbstractJpaEntity {
 	}
 
 	@NotNull
-	public final String getName() {
+	public String getName() {
 		return this.name;
 	}
 
 	@NotNull
-	public final Color getColor() {
+	public Color getColor() {
 		return this.color;
 	}
 
 	@NotNull
-	public final Set<Template> getGoals() {
+	public Set<Template> getGoals() {
 		return this.goals;
 	}
 
