@@ -1,4 +1,4 @@
-package com.akuchars.goals.habits
+package com.akuchars.goals.habits.ui.goal
 
 import com.akuchars.goals.habits.application.goal.command.GroupService
 import com.akuchars.goals.habits.rest.dto.goal.GroupRestDto
@@ -9,10 +9,12 @@ import org.springframework.http.MediaType
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
+import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.ResponseStatus
 import org.springframework.web.bind.annotation.RestController
 
-@RestController("/rest/v1/goals")
+@RestController
+@RequestMapping("/rest/v1/goals")
 class GoalRestController(val service: GroupService) {
 
     @ResponseStatus(CREATED)
