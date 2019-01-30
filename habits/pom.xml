@@ -63,7 +63,6 @@
 					</compilerPlugins>
 				</configuration>
 				<executions>
-
 					<execution>
 						<id>kapt</id>
 						<goals>
@@ -85,7 +84,7 @@
 					</execution>
 					<execution>
 						<id>compile</id>
-						<phase>process-sources</phase>
+						<phase>compile</phase>
 						<goals>
 							<goal>compile</goal>
 						</goals>
@@ -106,5 +105,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
 </project>
