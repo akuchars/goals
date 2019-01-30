@@ -1,5 +1,7 @@
 package com.akuchars.goals.habits.domain.goal.model;
 
+import static com.akuchars.goals.habits.domain.goal.model.GoalObject.DB_SCHEMA_NAME;
+
 import java.time.LocalDate;
 
 import javax.persistence.Access;
@@ -7,6 +9,7 @@ import javax.persistence.AccessType;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -16,6 +19,7 @@ import kotlin.jvm.internal.Intrinsics;
 
 @Entity
 @Access(AccessType.FIELD)
+@Table(schema = DB_SCHEMA_NAME, name = "goal_actual")
 @SuppressWarnings("NullabilityAnnotations")
 public class Actual extends AbstractJpaEntity {
 	private LocalDate date;

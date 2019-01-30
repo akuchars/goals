@@ -1,5 +1,7 @@
 package com.akuchars.goals.habits.domain.goal.model;
 
+import static com.akuchars.goals.habits.domain.goal.model.GoalObject.DB_SCHEMA_NAME;
+
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -7,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -17,6 +20,7 @@ import kotlin.jvm.internal.Intrinsics;
 
 @Entity
 @SuppressWarnings("NullabilityAnnotations")
+@Table(schema = DB_SCHEMA_NAME, name = "goals_group")
 public class Group extends AbstractJpaEntity {
 	@NotNull private static final String D_GROUP = "group";
 

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ResponseStatus
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-@RequestMapping("/rest/v1/goals")
+@RequestMapping(path = ["/rest/v1/goals"])
 class GoalRestController(val service: GroupService) {
 
     @ResponseStatus(CREATED)

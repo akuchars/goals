@@ -1,10 +1,13 @@
 package com.akuchars.goals.habits.domain.goal.model;
 
+import static com.akuchars.goals.habits.domain.goal.model.GoalObject.DB_SCHEMA_NAME;
+
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -14,6 +17,7 @@ import kotlin.jvm.internal.Intrinsics;
 
 @Entity
 @Access(AccessType.FIELD)
+@Table(schema = DB_SCHEMA_NAME, name = "goal_template")
 @SuppressWarnings("NullabilityAnnotations")
 public final class Template extends AbstractJpaEntity {
 	private String name;
