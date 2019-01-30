@@ -31,7 +31,7 @@ jobs:
             - mvn install -DskipTests
             - v1-dependencies-
 
-      - run: mvn clean compile install dependency:go-offline
+      - run: mvn compile install dependency:go-offline
 
       - save_cache:
           paths:

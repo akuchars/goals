@@ -25,6 +25,6 @@
 /.nb-gradle/
 /.mvn/
 .mvn/
-*/target/
-/habits/target/
-/habits/target/classes/
+!/habits/target/
+habits/src/main/resources/static/
+habits/src/main/resources/templates/
