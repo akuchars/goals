@@ -1,8 +1,8 @@
 package com.akuchars.goals.habits.rest.dto.goal
 
-class GroupRestDto (
+class HabitGroupRestDto (
         val id: Long,
         val name: String,
         val color: ColorRestDto,
-        val goals: Set<GoalTemplateRestDto>
+        val goals: Set<HabitTemplateRestDto>
 )

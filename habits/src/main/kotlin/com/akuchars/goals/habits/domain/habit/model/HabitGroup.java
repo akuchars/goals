@@ -1,6 +1,6 @@
-package com.akuchars.goals.habits.domain.goal.model;
+package com.akuchars.goals.habits.domain.habit.model;
 
-import static com.akuchars.goals.habits.domain.goal.model.GoalObject.DB_SCHEMA_NAME;
+import static com.akuchars.goals.habits.domain.habit.model.GoalObject.DB_SCHEMA_NAME;
 
 import java.util.Set;
 
@@ -21,7 +21,7 @@ import kotlin.jvm.internal.Intrinsics;
 @Entity
 @SuppressWarnings("NullabilityAnnotations")
 @Table(schema = DB_SCHEMA_NAME, name = "goals_group")
-public class Group extends AbstractJpaEntity {
+public class HabitGroup extends AbstractJpaEntity {
 	@NotNull private static final String D_GROUP = "group";
 
 	private String name;
@@ -34,10 +34,10 @@ public class Group extends AbstractJpaEntity {
 		cascade = {CascadeType.ALL},
 		orphanRemoval = true
 	)
-	private Set<Template> goals;
+	private Set<HabitTemplate> goals;
 
 
-	public Group(@NotNull String name, @NotNull Color color, @NotNull Set<Template> goals) {
+	public HabitGroup(@NotNull String name, @NotNull Color color, @NotNull Set<HabitTemplate> goals) {
 		Intrinsics.checkParameterIsNotNull(name, "name");
 		Intrinsics.checkParameterIsNotNull(color, "color");
 		Intrinsics.checkParameterIsNotNull(goals, "goals");
@@ -46,7 +46,7 @@ public class Group extends AbstractJpaEntity {
 		this.goals = goals;
 	}
 
-	public Group() {
+	public HabitGroup() {
 	}
 
 	@NotNull
@@ -60,7 +60,7 @@ public class Group extends AbstractJpaEntity {
 	}
 
 	@NotNull
-	public Set<Template> getGoals() {
+	public Set<HabitTemplate> getGoals() {
 		return this.goals;
 	}
 

@@ -1,18 +1,14 @@
 package com.akuchars.goals.habits.ui.goal
 
-import com.akuchars.goals.habits.application.goal.command.GroupService
-import com.akuchars.goals.habits.rest.dto.goal.ListOfGroupRestDto
+import com.akuchars.goals.habits.application.habit.command.GroupService
+import com.akuchars.goals.habits.rest.dto.goal.ListOfHabitGroupRestDto
 import com.akuchars.goals.habits.companion.andGet
-import com.akuchars.goals.habits.domain.goal.model.Group
 import com.akuchars.goals.habits.kernel.toJson
 import com.akuchars.goals.habits.rest.dto.goal.ColorRestDto.BLACK
-import com.akuchars.goals.habits.rest.dto.goal.GroupRestDto
+import com.akuchars.goals.habits.rest.dto.goal.HabitGroupRestDto
 import io.mockk.every
 import io.mockk.mockk
-import io.vavr.control.Either
-import io.vavr.control.Option
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
@@ -21,7 +17,6 @@ import org.springframework.test.context.junit.jupiter.SpringExtension
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 import org.springframework.test.web.servlet.setup.MockMvcBuilders
 
@@ -35,10 +30,10 @@ internal class GoalRestControllerTest {
     internal fun setUp() {
         //given
         service = mockk<GroupService>(relaxed = true).apply {
-            every { getAllGroups() } returns ListOfGroupRestDto()
+            every { getAllGroups() } returns ListOfHabitGroupRestDto()
         }
         mockMvc = MockMvcBuilders
-                .standaloneSetup(GoalRestController(service))
+                .standaloneSetup(HabitGroupRestController(service))
                 .build()
     }
 
@@ -46,7 +41,7 @@ internal class GoalRestControllerTest {
     fun `should properly save group rest dto`() {
         val result = mockMvc.perform(post("http://localhost:1994/rest/v1/goals/groups")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content((GroupRestDto(1L, "", BLACK, setOf())).toJson())
+                .content((HabitGroupRestDto(1L, "", BLACK, setOf())).toJson())
         )
 
         result.andExpect(status().isCreated)
@@ -57,9 +52,9 @@ internal class GoalRestControllerTest {
     fun `should return properly lists`() {
         //when
         val result = mockMvc.perform(get("http://localhost:1994/rest/v1/goals/groups"))
-                .andGet(ListOfGroupRestDto::class)
+                .andGet(ListOfHabitGroupRestDto::class)
 
-        assertThat(result).isInstanceOf(ListOfGroupRestDto::class.java)
-        assertThat(result).isEqualToComparingFieldByField(ListOfGroupRestDto())
+        assertThat(result).isInstanceOf(ListOfHabitGroupRestDto::class.java)
+        assertThat(result).isEqualToComparingFieldByField(ListOfHabitGroupRestDto())
     }
 }

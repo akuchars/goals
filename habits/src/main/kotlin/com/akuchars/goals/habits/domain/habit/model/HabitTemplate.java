@@ -1,6 +1,6 @@
-package com.akuchars.goals.habits.domain.goal.model;
+package com.akuchars.goals.habits.domain.habit.model;
 
-import static com.akuchars.goals.habits.domain.goal.model.GoalObject.DB_SCHEMA_NAME;
+import static com.akuchars.goals.habits.domain.habit.model.GoalObject.DB_SCHEMA_NAME;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
@@ -19,7 +19,7 @@ import kotlin.jvm.internal.Intrinsics;
 @Access(AccessType.FIELD)
 @Table(schema = DB_SCHEMA_NAME, name = "goal_template")
 @SuppressWarnings("NullabilityAnnotations")
-public final class Template extends AbstractJpaEntity {
+public final class HabitTemplate extends AbstractJpaEntity {
 	private String name;
 	private String description;
 	private String schedule;
@@ -27,9 +27,9 @@ public final class Template extends AbstractJpaEntity {
 	@JoinColumn(
 		name = "group_id"
 	)
-	private Group group;
+	private HabitGroup group;
 
-	public Template(@NotNull String name, @NotNull String description, @NotNull String schedule, @NotNull Group group) {
+	public HabitTemplate(@NotNull String name, @NotNull String description, @NotNull String schedule, @NotNull HabitGroup group) {
 		Intrinsics.checkParameterIsNotNull(name, "name");
 		Intrinsics.checkParameterIsNotNull(description, "description");
 		Intrinsics.checkParameterIsNotNull(schedule, "schedule");
@@ -40,7 +40,7 @@ public final class Template extends AbstractJpaEntity {
 		this.group = group;
 	}
 
-	public Template() {
+	public HabitTemplate() {
 	}
 
 	@NotNull
@@ -59,7 +59,7 @@ public final class Template extends AbstractJpaEntity {
 	}
 
 	@NotNull
-	public final Group getGroup() {
+	public final HabitGroup getGroup() {
 		return this.group;
 	}
 }

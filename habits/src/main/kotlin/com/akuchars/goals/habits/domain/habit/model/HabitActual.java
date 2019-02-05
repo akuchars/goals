@@ -1,6 +1,6 @@
-package com.akuchars.goals.habits.domain.goal.model;
+package com.akuchars.goals.habits.domain.habit.model;
 
-import static com.akuchars.goals.habits.domain.goal.model.GoalObject.DB_SCHEMA_NAME;
+import static com.akuchars.goals.habits.domain.habit.model.GoalObject.DB_SCHEMA_NAME;
 
 import java.time.LocalDate;
 
@@ -21,14 +21,14 @@ import kotlin.jvm.internal.Intrinsics;
 @Access(AccessType.FIELD)
 @Table(schema = DB_SCHEMA_NAME, name = "goal_actual")
 @SuppressWarnings("NullabilityAnnotations")
-public class Actual extends AbstractJpaEntity {
+public class HabitActual extends AbstractJpaEntity {
 	private LocalDate date;
 	private boolean done;
 	@OneToOne
 	@JoinColumn(
 		name = "goal_id"
 	)
-	private final Template goal;
+	private final HabitTemplate goal;
 
 	@NotNull
 	public LocalDate getDate() {
@@ -40,13 +40,13 @@ public class Actual extends AbstractJpaEntity {
 	}
 
 	@NotNull
-	public Template getGoal() {
+	public HabitTemplate getGoal() {
 		return this.goal;
 	}
 
-	public Actual(@NotNull LocalDate date, boolean done, @NotNull Template goal) {
+	public HabitActual(@NotNull LocalDate date, boolean done, @NotNull HabitTemplate goal) {
 		Intrinsics.checkParameterIsNotNull(date, "date");
-		Intrinsics.checkParameterIsNotNull(goal, "goal");
+		Intrinsics.checkParameterIsNotNull(goal, "habit");
 		this.date = date;
 		this.done = done;
 		this.goal = goal;
