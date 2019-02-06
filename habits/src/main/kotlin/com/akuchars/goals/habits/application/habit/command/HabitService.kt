@@ -2,7 +2,9 @@ package com.akuchars.goals.habits.application.habit.command
 
 import com.akuchars.goals.habits.application.habit.model.HabitGroupNotFoundException
 import com.akuchars.goals.habits.application.habit.query.HabitTemplateQueryService
+import com.akuchars.goals.habits.domain.habit.model.HabitActual
 import com.akuchars.goals.habits.domain.habit.model.HabitTemplate
+import com.akuchars.goals.habits.domain.habit.repository.HabitActualRepository
 import com.akuchars.goals.habits.domain.habit.repository.HabitGroupRepository
 import com.akuchars.goals.habits.domain.habit.repository.HabitTemplateRepository
 import com.akuchars.goals.habits.rest.dto.goal.HabitTemplateRestDto
@@ -11,13 +13,15 @@ import io.vavr.control.Option
 import io.vavr.kotlin.option
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
+import java.time.LocalDate.now
 
 @Service
 class HabitService(
+        private val groupRepository: HabitGroupRepository,
+        private val actualRepository: HabitActualRepository,
         private val repository: HabitTemplateRepository,
         private val converter: HabitTemplateConverter,
-        private val queryService: HabitTemplateQueryService,
-        private val groupRepository: HabitGroupRepository
+        private val queryService: HabitTemplateQueryService
 ) {
 
     fun getAllTemplatesBy(groupId: Long?): ListOfHabitTemplateRestDto {
@@ -29,13 +33,12 @@ class HabitService(
 
     @Throws(HabitGroupNotFoundException::class)
     fun createTemplate(dto: HabitTemplateRestDto) {
-        val schedule = dto.schedule
-
         //todo utworzenie habit actual na podstawie schedula (w kolejce)
-
         val group = groupRepository.findById(dto.groupId).orElseThrow(::HabitGroupNotFoundException)
-        val entity = HabitTemplate(dto.name, dto.description, dto.schedule, group)
-        repository.save(entity)
+        HabitTemplate(dto.name, dto.description, dto.schedule.schedule, group).apply {
+            repository.save(this)
+            actualRepository.save(HabitActual(now(), false, this))
+        }
     }
 
     internal fun getAllTemplate(): ListOfHabitTemplateRestDto {

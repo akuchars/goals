@@ -25,9 +25,7 @@ public class HabitActual extends AbstractJpaEntity {
 	private LocalDate date;
 	private boolean done;
 	@OneToOne
-	@JoinColumn(
-		name = "goal_id"
-	)
+	@JoinColumn(name = "goal_id")
 	private final HabitTemplate goal;
 
 	@NotNull

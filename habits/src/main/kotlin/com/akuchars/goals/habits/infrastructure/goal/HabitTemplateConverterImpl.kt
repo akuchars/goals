@@ -4,6 +4,7 @@ import com.akuchars.goals.habits.application.common.command.ColorConverter
 import com.akuchars.goals.habits.application.habit.command.HabitTemplateConverter
 import com.akuchars.goals.habits.domain.habit.model.HabitTemplate
 import com.akuchars.goals.habits.rest.dto.goal.HabitTemplateRestDto
+import com.akuchars.goals.habits.rest.dto.goal.ScheduleTypeRestDto
 import org.springframework.stereotype.Component
 
 @Component
@@ -14,7 +15,7 @@ class HabitTemplateConverterImpl (val colorConverter: ColorConverter): HabitTemp
                 goalTemplate.id!!,
                 goalTemplate.name,
                 goalTemplate.description,
-                goalTemplate.schedule,
+                ScheduleTypeRestDto.find(goalTemplate.schedule),
                 goalTemplate.group.id!!,
                 colorConverter.convert(goalTemplate.group.color)!!
         )
